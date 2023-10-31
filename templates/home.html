@@ -6,9 +6,20 @@
 
 <body>
     <h1>CSCI 5922 - Neural Networks and Deep Learning Project</h1>
-    <form>
-        <label>Upload Image</label>
-        <input type="image" name="input_img">
-        <button type="submit">Upload</button>
+    <h1>Upload an Image</h1>
+    <form method="POST" enctype="multipart/form-data" onsubmit="reloadPage()">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Upload">
     </form>
+
+    <h4>
+        High Resolution Image will be downloaded automatically
+    </h4>
+
+    <script>
+        function reloadPage() {
+            location.reload()
+        }
+    </script>
+
 </body>
