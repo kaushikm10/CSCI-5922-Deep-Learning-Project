@@ -5,10 +5,13 @@ import os
 import numpy as np
 from PIL import Image
 import cv2
+import pandas as pd
 import io
 
 app = Flask(__name__)
 model = tf.keras.models.load_model('models/model_1000_epochs.h5')
+df = pd.read_csv('csvs/model_1000_epochs.csv')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -45,7 +48,12 @@ def results():
 
 @app.route('/analysis')
 def analysis():
-    return render_template('analysis.html')
+    loss = list(df['loss'].values)
+    val_loss = list(df['val_loss'].values)
+    acc = list(df['acc'].values)
+    val_acc = list(df['val_acc'].values)
+    x_axis = list(range(len(loss)))
+    return render_template('analysis.html', x_axis=x_axis, loss=loss, val_loss=val_loss, acc=acc, val_acc=val_acc)
 
 @app.route('/conclusion')
 def conclusion():
