@@ -2,21 +2,41 @@
 
 {% block title %}
 <title>Home</title>
+
+<style>
+    .container {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        h4 {
+            margin-top: 20px;
+        }
+</style>
+
 {% endblock %}
 
 {% block content %}
 
-    <h1>CSCI 5922 - Neural Networks and Deep Learning Project</h1>
-    <h1>Upload an Image</h1>
-    <form method="POST" enctype="multipart/form-data" onsubmit="reloadPage()">
-        <input type="file" name="image" accept="image/*">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+        <h1>CSCI 5922 - Neural Networks and Deep Learning Project</h1>
+        <h1>Upload an Image</h1>
+        <form method="POST" enctype="multipart/form-data" onsubmit="reloadPage()">
+            <input type="file" name="image" accept="image/*">
+            <input type="submit" value="Upload">
+        </form>
 
-    <h4>
-        High Resolution Image will be downloaded automatically
-    </h4>
-
+        <h4>
+            High Resolution Image will be downloaded automatically
+        </h4>
+    </div>
     <script>
         function reloadPage() {
             location.reload()

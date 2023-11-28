@@ -4,15 +4,22 @@
     {% block title %} {% endblock %}
 
     <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
         .navbar {
             background-color: #333;
             overflow: hidden;
-            align-items: center;
+            text-align: center;
         }
         
         .navbar a {
-            float: left;
-            display: flex;
+            display: inline-block;
             color: white;
             text-align: center;
             padding: 14px 16px;
@@ -23,6 +30,27 @@
             background-color: #ddd;
             color: black;
         }
+
+
+    
+
+    section {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-justify: inter-word;
+        text-align: justify;
+    }
+
+    section p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+
     </style>
 </head>
 
