@@ -9,7 +9,7 @@ import pandas as pd
 import io
 
 app = Flask(__name__)
-model = tf.keras.models.load_model('models/model_1000_epochs.h5')
+model = tf.keras.models.load_model('models/model_1000_epochs_psnr_ssim.h5')
 df = pd.read_csv('csvs/model_1000_epochs.csv')
 
 
