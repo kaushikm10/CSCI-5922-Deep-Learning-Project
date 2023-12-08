@@ -32,10 +32,16 @@
             <input type="file" name="image" accept="image/*">
             <input type="submit" value="Upload">
         </form>
-
-        <h4>
-            High Resolution Image will be downloaded automatically
-        </h4>
+        <br>
+        {% if high_img_data %}
+        <h2>Predicted High Res</h2>
+        <img src="data:image/jpeg;base64,{{ high_img_data }}" id="output" alt="img_data" class="img-upload" />
+        {% endif %}
+        <br>
+        {% if low_img_data %}
+        <h2>Uploaded Low Res</h2>
+        <img src="data:image/jpeg;base64,{{ low_img_data }}" id="output" alt="img_data" class="img-upload" />
+        {% endif %}
     </div>
     <script>
         function reloadPage() {

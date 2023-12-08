@@ -9,7 +9,7 @@ import pandas as pd
 import io
 from skimage.metrics import peak_signal_noise_ratio, structural_similarity
 from tensorflow.keras import backend as K
-
+import base64
 def psnr(y_true, y_pred):
     y_true = K.clip(y_true, 0.0, 1.0)
     y_pred = K.clip(y_pred, 0.0, 1.0)
@@ -35,12 +35,21 @@ def home():
         img = Image.open(uploaded_img)
         img = img.resize((256, 256))
         img = np.array(img)/255.
-        high_res_img = model.predict(np.expand_dims(img, axis=0))[0]
+        high_res_img = model.predict(np.expand_dims(img[:, :, :3], axis=0))[0]
+        low_res_img = Image.fromarray(np.uint8(np.clip(img*255, 0, 255))).convert('RGB')
         high_res_img = Image.fromarray(np.uint8(np.clip(high_res_img*255, 0, 255))).convert('RGB')
-        img_buf = io.BytesIO()
-        high_res_img.save(img_buf, format='JPEG')
-        img_buf.seek(0)
-        return send_file(img_buf, mimetype='image/jpeg', as_attachment=True, download_name="output_file.jpg")
+
+        with io.BytesIO() as img_buf_low:
+            low_res_img.save(img_buf_low, format='JPEG')
+            img_bytes = img_buf_low.getvalue()
+        encoded_string_low = base64.b64encode(img_bytes).decode('utf-8')
+
+        with io.BytesIO() as img_buf_high:
+            high_res_img.save(img_buf_high, format='JPEG')
+            img_bytes = img_buf_high.getvalue()
+        encoded_string_high = base64.b64encode(img_bytes).decode('utf-8')
+
+        return render_template('home.html', high_img_data=encoded_string_high, low_img_data=encoded_string_low)
 
     return render_template('home.html')
 
