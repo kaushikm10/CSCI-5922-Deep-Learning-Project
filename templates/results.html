@@ -1,9 +1,118 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>Results</title>
+    <title>Results</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
 
 {% block content %}
 <h1>Results</h1>
+
+<div id="loss-plot" style="float: auto;"></div>
+<div id="ssim-plot" style="float: auto;"></div>
+<div id="psnr-plot" style="float: auto;"></div>
+
+<script>
+    var x = {{ x_axis | safe }};
+    var loss = {{ loss | safe }};
+    var val_loss = {{ val_loss | safe }};
+    var ssim = {{ ssim | safe }};
+    var val_ssim = {{ val_ssim | safe }};
+    var psnr = {{ psnr | safe }};
+    var val_psnr = {{ val_psnr | safe }};
+
+    var lossTrace = {
+        x: x,
+        y: loss,
+        mode: 'lines',
+        name: 'Train Loss',
+        line: {color: 'blue'}
+    };
+
+    var vallossTrace = {
+        x: x,
+        y: val_loss,
+        mode: 'lines',
+        name: 'Val Loss',
+        line: {color: 'red'}
+    }
+
+    var data = [lossTrace, vallossTrace];
+
+    var layout = {
+        title: 'Training and Validation Loss Over 1000 Epochs',
+        xaxis: {
+            title: 'Epochs'
+        },
+        yaxis: {
+            title: 'Loss'
+        }
+    };
+
+    Plotly.newPlot('loss-plot', data, layout);
+
+    var ssimTrace = {
+        x: x,
+        y: ssim,
+        mode: 'lines',
+        name: 'Train SSIM',
+        line: {color: 'blue'}
+    };
+
+    var valssimTrace = {
+        x: x,
+        y: val_ssim,
+        mode: 'lines',
+        name: 'Val SSIM',
+        line: {color: 'red'}
+    }
+
+    var data = [ssimTrace, valssimTrace];
+
+    var layout = {
+        title: 'Training and Validation Structure Similarity Index Over 1000 Epochs',
+        xaxis: {
+            title: 'Epochs'
+        },
+        yaxis: {
+            title: 'SSIM'
+        }
+    };
+
+    Plotly.newPlot('ssim-plot', data, layout);
+
+    var psnrTrace = {
+        x: x,
+        y: psnr,
+        mode: 'lines',
+        name: 'Train PSNR',
+        line: {color: 'blue'}
+    };
+
+    var valpsnrTrace = {
+        x: x,
+        y: val_psnr,
+        mode: 'lines',
+        name: 'Val PSNR',
+        line: {color: 'red'}
+    }
+
+    var data = [psnrTrace, valpsnrTrace];
+
+    var layout = {
+        title: 'Training and Validation Peak-Signal Noise Ratio Over 1000 Epochs',
+        xaxis: {
+            title: 'Epochs'
+        },
+        yaxis: {
+            title: 'PSNR'
+        }
+    };
+
+    Plotly.newPlot('psnr-plot', data, layout);
+
+
+
+</script>
+
 {% endblock %}
