@@ -2,7 +2,15 @@
 
 {% block title %}
     <title>Analysis</title>
+    <style>
+        img {
+            width: 50%;
+            height: 50%;
+            margin-left: 25%;
+        }
 
+    
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -12,6 +20,8 @@
     <p>
         The architecture of image super-resolution model is designed using a series of convolutional and transposed convolutional layers, accompanied by batch normalization, maxpooling, activation functions, and upsampling operations. 1.3M parameters were trained to convert low res images to high res images. The architecture diagram is available <b><u><a href="https://imgur.com/a/xap6Flp">here</a></u></b>. The model is built using an encoder-decoder design.
     </p>
+    <img src="{{ url_for('static', filename='autoencoder.png') }}">
+    <a style="font-size: 10px;" href="https://www.semanticscholar.org/paper/Coupled-Deep-Autoencoder-for-Single-Image-Zeng-Yu/cbec1de269cb8e4e59d452b61e4b5b7add86e7cc">Source</a>
     <hr>
     <u style="text-align: center;"><h4>Encoder</h4></u>
     <p>The encoder is the part of the neural network responsible for compressing the input information, extracting relevant features, and creating a condensed representation of the input data. In the context of image super-resolution:</p>
