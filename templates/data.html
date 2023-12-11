@@ -2,6 +2,19 @@
 
 {% block title %}
 <title>Data</title>
+<style>
+    img {
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
+    }
+
+    span {
+        margin-left: 45%;
+        font-size: 10px;
+    }
+
+</style>
 {% endblock %}
 
 {% block content %}
@@ -16,7 +29,13 @@
 
     <p>
         The dataset is neatly organized into two primary folders: 'train' and 'val.' Inside these folders, there are subdirectories named 'high_res' and 'low_res,' housing high-resolution and low-resolution images, respectively. This dataset consists of 685 training images and 170 test images. Each of these images undergoes a crucial transformation, being resized to a standardized format of 256x256 pixels with three color channels (256x256x3). This step ensures uniformity, allowing our model to process and learn from images of consistent dimensions.
-    </p>
+    </p><br>
+    <img src="{{url_for('static', filename='sample_image_1.png')}}"><br>
+    <span>Sample Image 1</span><br><br>
+    <img src="{{url_for('static', filename='sample_image_2.png')}}"><br>
+    <span>Sample Image 2</span>
+
+
 </section>
 
 {% endblock %}

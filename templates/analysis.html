@@ -6,6 +6,40 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Analysis</h1>
 
+    <section>
+        <h1 style="text-align: center;">Analysis</h1>
+    <p>
+        The architecture of image super-resolution model is designed using a series of convolutional and transposed convolutional layers, accompanied by batch normalization, maxpooling, activation functions, and upsampling operations. 1.3M parameters were trained to convert low res images to high res images. The architecture diagram is available <b><u><a href="https://imgur.com/a/xap6Flp">here</a></u></b>. The model is built using an encoder-decoder design.
+    </p>
+    <hr>
+    <u style="text-align: center;"><h4>Encoder</h4></u>
+    <p>The encoder is the part of the neural network responsible for compressing the input information, extracting relevant features, and creating a condensed representation of the input data. In the context of image super-resolution:</p>
+    <p><b>Feature Extraction: </b>The encoder identifies essential patterns and features within the low-resolution input image. It uses convolutional layers to detect edges, textures, and other visual elements.</p>
+    <p><b>Downsampling: </b>To reduce the spatial dimensions of the image and focus on essential information, the encoder incorporates downsampling techniques such as max pooling. This step retains the most critical features while discarding less relevant details.</p>
+    <p><b>Compression: </b>Ultimately, the encoder compresses the information into a lower-dimensional representation, often referred to as a bottleneck or latent space. This condensed form retains the most crucial information for image reconstruction.</p>
+    <hr>
+    <u style="text-align: center;"><h4>Decoder</h4></u>
+    <p>The decoder's primary role is to reconstruct a high-resolution image from the compressed representation created by the encoder.</p>
+    <p><b>Upsampling: The decoder begins by increasing the spatial dimensions of the compressed representation. Upsampling techniques, such as transposed convolutional layers are employed to reverse the downsampling done by the encoder.</b></p>
+    <p><b>Feature reconstruction: </b>As the decoder unfolds, it progressively reconstructs finer details lost during the downsampling process. This involves capturing intricate patterns, textures, and structures to recreate a more detailed version of the original image. Additionally, to improve image reconstruction, the decoder uses skip connections, connecting equivalent layers between the encoder and decoder to learn high level features from the original image.</p>
+    <p><b>Output generation: </b>The final output of the decoder is a high-resolution image that closely resembles the original input but with enhanced details. This image is the result of the model's learning process, where it has iteratively improved its ability to reconstruct detailed features from the compressed representation.</p>
+    <hr>
+    <u style="text-align: center;"><h4>Skip Connections</h4></u>
+    <p>The use of skip connections, particularly the 'add' layers, is instrumental in maintaining a connection between the initial and later stages of the network. This ensures that low-level features crucial for image details are not lost during the encoding-decoding process. By adding the output of the initial convolutional layers to the later stages, the model can refine and enhance the features learned in the early steps, contributing to the overall effectiveness of the image super-resolution process.</p>
+    <hr>
+    <p>Below is the break down of the types of layers employed in this architecture.</p>
+    <p>The <b>Input</b> Layer serves as the entry point for the model. This layer takes a batch of 256 x 256 x 3 images as the input.</p>
+    <p><b>Convolutional</b> layers play a pivotal role in feature extraction. Here, there are four Conv2D layers, each responsible for detecting different hierarchical features in the input image. The filters parameter determines the number of feature maps, capturing intricate patterns in the data.</p>
+    <p><b>Batch Normalization</b> follows each convolutional layer, normalizing the input to mitigate internal covariate shift. This helps in stabilizing and accelerating the training process.</p>
+    <p><b>LeakyReLU</b> activation functions introduce non-linearity to the model, allowing it to capture complex relationships in the data. The leaky nature prevents the vanishing gradient problem.</p>
+    <p><b>MaxPooling</b> layers reduce spatial dimensions, retaining essential features while reducing computational complexity. These layers downsample the input, focusing on the most salient information.</p>    
+    <p><b>Transposed Convolutional</b> layers are pivotal for upscaling the features learned earlier. These layers help in reconstructing high-resolution details from the low-resolution representations.</p>
+    <p><b>Upsampling</b> layers increase the spatial dimensions of the feature maps, aiding in the reconstruction of higher-resolution details.</p>
+    <p>The <b>Add</b> layer introduces skip connections, merging features learned in initial steps with those from later layers. This mechanism facilitates the preservation of fine details and gradients, aiding in the mitigation of information loss during the encoding-decoding process.</p>
+
+
+
+    
+</section>
 {% endblock %}
