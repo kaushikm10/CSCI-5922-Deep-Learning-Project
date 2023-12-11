@@ -5,7 +5,24 @@
     Introduction
 </title>
 
+<style>
+    section img {
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
+    }
+    section a {
+        font-size: 15px;
+        text-decoration: none;
+        margin-left: 47%;
+    }
 
+    section span {
+        font-size: 15px;
+        margin-left: 26%;
+    }
+
+</style>
 
 
 {% endblock %}
@@ -18,15 +35,35 @@
         </h1>
 
         <p>
+            Welcome to a world where images become sharper, clearer, and more vibrant. Ever noticed how some pictures lack the crispness we desire? That's where our image super-resolution model steps in. Picture this – a tool that can enhance the details in your photos, making fuzzy edges sharp and pixelated scenes crystal clear. This isn't just about technology; it's about making visuals more vivid and detailed, transforming the way we see and understand the world.
+        </p>
+
+        <p>
             In a world inundated with images, whether captured by our smartphones or shared on social media, the quest for visual perfection is universal. We've all encountered those moments when a cherished photo falls short in terms of sharpness and clarity, leaving us yearning for a way to magically enhance its resolution. Imagine if there were a technology capable of transforming those slightly blurry or pixelated images into stunning, crystal-clear representations without compromising their authenticity. This is precisely the promise of image super-resolution, a fascinating field that aims to elevate the visual quality of images through advanced computational techniques.
         </p>
 
         <p>
             Picture this scenario: you have an old photograph with sentimental value, but the resolution doesn't quite meet modern standards. Or perhaps you've zoomed in on a breathtaking landscape in a photo, only to find that the details become fuzzy. This is where image super-resolution comes into play. In essence, it's like having a digital wizard that can magically enhance the details and sharpness of an image, making it visually captivating. Our journey into the realm of image super-resolution involves harnessing the power of sophisticated algorithms, specifically auto-encoders and ResNet blocks, which act as the digital artisans responsible for breathing new life into our visual memories.
         </p>
+        
+        <img src="{{ url_for('static', filename='intro.jpg') }}"><br>
+        <span><b>Left</b>: Low resolution image | <b>Right</b>: High resolution image</span> <br>
+        <a href="https://blog.paperspace.com/image-super-resolution/">Source</a>
+        <p>
+            This exploration is not merely about the technical intricacies of algorithms; it's about the transformative potential of a technology that impacts our everyday visual experiences. Whether you're an amateur photographer, a social media enthusiast, or someone who simply appreciates the beauty of well-captured moments, image super-resolution has the potential to redefine the way we perceive and share images.             At its core, image super-resolution seeks to overcome the constraints of low-quality visuals. Whether it's improving the resolution of surveillance footage for enhanced security or refining the intricacies of medical imaging for precise diagnoses, the applications are far-reaching.
+        </p>
 
         <p>
-            This exploration is not merely about the technical intricacies of algorithms; it's about the transformative potential of a technology that impacts our everyday visual experiences. Whether you're an amateur photographer, a social media enthusiast, or someone who simply appreciates the beauty of well-captured moments, image super-resolution has the potential to redefine the way we perceive and share images. Join me on this captivating journey as we delve into the world of pixels, algorithms, and the art of enhancing the very fabric of our visual narratives. Together, we'll uncover the magic behind image super-resolution and explore its implications for how we view and cherish the images that fill our lives with meaning and memories.
+            
+            In medical imaging, high-resolution images are crucial for accurate diagnosis. Super-resolution can improve the clarity of medical images such as X-rays, MRIs, and CT scans, allowing medical professionals to better identify and analyze details. 
+            Satellite and aerial imagery often suffer from lower resolution due to data transmission limitations. Image super-resolution can be employed to enhance the quality of these images, aiding in tasks such as land cover classification, urban planning, and environmental monitoring.
+            Surveillance cameras, especially those at a distance, may capture low-resolution images. Super-resolution can be applied to enhance the quality of surveillance footage, improving the ability to identify individuals or objects in the scene.
+
+            
+        </p>
+
+        <p>
+            This project aims to introduce the audience to the world of image super-resolution. With the advent of different neural network architectures, we can now achieve state-of-the-art results on a wide variety of image super-resolution tasks. 
         </p>
     </section>
 
