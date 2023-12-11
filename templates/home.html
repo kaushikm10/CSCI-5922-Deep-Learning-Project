@@ -4,6 +4,25 @@
 <title>Home</title>
 
 <style>
+
+    body {
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 80%;
+    }
+
+    .image-container h3 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
     .container {
             text-align: center;
         }
@@ -32,16 +51,18 @@
             <input type="file" name="image" accept="image/*">
             <input type="submit" value="Upload">
         </form>
-        <br>
-        {% if high_img_data %}
-        <h2>Predicted High Res</h2>
-        <img src="data:image/jpeg;base64,{{ high_img_data }}" id="output" alt="img_data" class="img-upload" />
-        {% endif %}
-        <br>
-        {% if low_img_data %}
-        <h2>Uploaded Low Res</h2>
-        <img src="data:image/jpeg;base64,{{ low_img_data }}" id="output" alt="img_data" class="img-upload" />
-        {% endif %}
+
+        <h4>Results will appear here</h4>
+        <div class="image-container">
+            {% if high_img_data %}
+            <h3>Predicted High Res</h3>
+            <img src="data:image/jpeg;base64,{{ high_img_data }}" id="high" alt="img_data" class="img-upload" />
+            {% endif %}
+            {% if low_img_data %}
+            <h3>Uploaded Low Res</h3>
+            <img src="data:image/jpeg;base64,{{ low_img_data }}" id="low" alt="img_data" class="img-upload" />
+            {% endif %}
+        </div>
     </div>
     <script>
         function reloadPage() {
