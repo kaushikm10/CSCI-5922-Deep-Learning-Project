@@ -13,6 +13,10 @@
     <p>
         The foundation of any successful deep learning project rests on the quality and relevance of its training data. In this phase, relevant dataset was collected and processed for training our image super-resolution model. The dataset comprised images spanning various domains, ensuring that the model could generalize well to a wide range of visual content. The dataset was collected from Kaggle (<a href="https://www.kaggle.com/datasets/adityachandrasekhar/image-super-resolution">Link</a>). Now let's discuss about this dataset in detail. 
     </p>
+
+    <p>
+        The dataset is neatly organized into two primary folders: 'train' and 'val.' Inside these folders, there are subdirectories named 'high_res' and 'low_res,' housing high-resolution and low-resolution images, respectively. This dataset consists of 685 training images and 170 test images. Each of these images undergoes a crucial transformation, being resized to a standardized format of 256x256 pixels with three color channels (256x256x3). This step ensures uniformity, allowing our model to process and learn from images of consistent dimensions.
+    </p>
 </section>
 
 {% endblock %}
