@@ -17,8 +17,7 @@
 <section>
 <h1 style="text-align: center;">Results</h1>
 
-<p>After an extensive training process, the image super-resolution model has demonstrated significant improvements, producing high-quality results.</p>
-
+<p>After an extensive training process, the image super-resolution model has demonstrated significant improvements, producing high-quality results.
 <h4 style="text-align: center;">Model Training</h4>
 <p>The model is trained iteratively over 1000 epochs. This extensive training duration allows the model to grasp the complexities of the dataset, progressively improving its ability to generate high-quality, super-resolved images. The use of a batch size of 128 during training ensures efficient updates of the model's weights, striking a balance between computational efficiency and the model's capacity to generalize well to diverse image data. The performance of the model is evaluated using two metrics: 1) Strutural Similarity Index and 2) Peak Signal-to-Noise Ratio. The model's training is facilitated by the Adam optimizer that optimizes the Mean Squared Error loss. This optimizer contributes to the model's efficiency in navigating the complex landscape of image data, enhancing its ability to converge towards optimal results during the training process.</p>
 <hr>
@@ -32,16 +31,19 @@
 <p>The Structural Similarity Index (SSIM) is often used as a metric to assess the quality of the enhanced (super-resolved) images. SSIM evaluates the similarity between the super-resolved image and the original high-resolution image, considering structural information, luminance, and contrast.</p>
 <img src="{{ url_for('static', filename='ssim.svg') }}">
 <a href="https://en.wikipedia.org/wiki/Structural_similarity">Source</a>
-<p>A higher SSIM value indicates a closer match between the super-resolved and high-resolution images, suggesting that the super-resolved image preserves structural details, luminance, and contrast similar to the original high-resolution image.</p>
+<p>A higher SSIM value indicates a closer match between the super-resolved and high-resolution images, suggesting that the super-resolved image preserves structural details, luminance, and contrast similar to the original high-resolution image. The Structural Similarity Index (SSIM) values of 0.87 for training images and 0.88 for validation images indicate a high degree of similarity between the super-resolved images produced by the model and the original high-resolution images. A SSIM of 0.87 for training images suggests that the model captured relevant image information effectively. A SSIM of 0.88 for validation images shows that the model performs well on the unseen data,  showcasing the robustness of the model in enhancing a variety of images.</p>
 <div id="ssim-plot" style="float: auto;"></div>
 <hr>
 <h4 style="text-align: center;">Peak Signal-to-Noise Ratio</h4>
 <p>The Peak Signal-to-Noise Ratio is a metric commonly used to evaluate the quality of an image by measuring the ratio between the maximum possible power of a signal and the power of the corrupting noise that affects the quality of its representation.</p>
 <img src="{{ url_for('static', filename='PSNR_MATH.jpg') }}">
 <a href="https://www.ni.com/en-in/shop/data-acquisition-and-control/add-ons-for-data-acquisition-and-control/what-is-vision-development-module/peak-signal-to-noise-ratio-as-an-image-quality-metric.html">Source</a>
-<p> It's often expressed in decibels (dB) and is calculated using the mean squared error between the original (ground truth) and the compressed or reconstructed image. A higher PSNR value indicates a higher quality image, as it implies a lower level of noise or distortion in the reconstructed image.</p>
+<p> It's often expressed in decibels (dB) and is calculated using the mean squared error between the original (ground truth) and the compressed or reconstructed image. A higher PSNR value indicates a higher quality image, as it implies a lower level of noise or distortion in the reconstructed image. In this case, a PSNR of 27.34dB and 27.54dB is achieved for training and validation dataset respectively. This indicates that the model generalizes decently on the training data and performs well on unseen images.</p>
 <div id="psnr-plot" style="float: auto;"></div>
-
+<hr>
+<h4 style="text-align: center;">Testing</h4>
+The model was tested on 170 images each of the size 256 x 256 x 3 achieving the following results.</p>
+<img style="width: 100%; margin-left: 0%;" src="{{ url_for('static', filename='testres.png') }}">
 
 </section>
 

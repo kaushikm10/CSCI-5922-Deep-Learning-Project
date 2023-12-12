@@ -5,5 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<h1>Conclusion</h1>
+<section>
+<h1 style="text-align: center;">Conclusion</h1>
+
+<p>Embarking on the journey of creating an image super-resolution model using Autoencoders has been both challenging and rewarding. The primary goal of the project was to enhance the quality of low-resolution images, uncovering hidden details and bringing them to life. The results obtained underscore the success of the approach followed in achieving this objective.</p>
+<p>Through countless iterations and training cycles, the model has demonstrated a remarkable ability to upscale images, providing clearer and more detailed visual representations. The incorporation of Skip Connections has proven instrumental in preserving intricate features, ensuring that the super-resolved images maintain a high level of fidelity to the original high-resolution counterparts.</p>
+<p>In assessing the model's performance, Peak Signal-to-Noise Ratio (PSNR) and Structural Similarity Index (SSIM) was chosen as the metrics over traditional accuracy measures. The reason lies in the nature of image super-resolution, where pixel-wise accuracy might not capture the perceptual quality accurately. PSNR and SSI consider factors like noise, luminance, and structure, offering a more holistic evaluation of the model's success in reconstructing detailed images.</p>
+<p>Looking forward, there are exciting possibilities for future work. One avenue worth exploring involves handling images with varying dimensions. Adapting this model to accommodate different input sizes would enhance its versatility and applicability across diverse datasets. Additionally, the integration of Generative Adversarial Networks (GANs) could introduce a new dimension to this model, fostering the creation of even more realistic and visually appealing super-resolved images.</p>
+</section>
 {% endblock %}
