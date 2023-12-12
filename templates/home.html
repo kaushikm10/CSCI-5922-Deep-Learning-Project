@@ -43,12 +43,14 @@
 {% endblock %}
 
 {% block content %}
-
+    <section>
     <div class="container">
-        <h1>CSCI 5922 - Neural Networks and Deep Learning Project</h1>
-        <h1>Upload an Image</h1>
+        <h1>Name: Kaushik Metha</h1>
+        <h2>CSCI 5922 - Neural Networks and Deep Learning Project</h2>
+        <hr>
+        <h3>Upload an Image*</h3>
         <form method="POST" enctype="multipart/form-data" onsubmit="reloadPage()">
-            <input type="file" name="image" accept="image/*">
+            <input type="file" name="image" accept=".jpg, .jpeg, .png" required>
             <input type="submit" value="Upload">
         </form>
 
@@ -64,6 +66,7 @@
             {% endif %}
         </div>
     </div>
+</section>
     <script>
         function reloadPage() {
             location.reload()
