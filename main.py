@@ -57,9 +57,6 @@ def home():
 def introduction():
     return render_template('introduction.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 @app.route('/data')
 def data():
