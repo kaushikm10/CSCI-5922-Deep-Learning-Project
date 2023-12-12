@@ -31,7 +31,7 @@
     <hr>
     <u style="text-align: center;"><h4>Decoder</h4></u>
     <p>The decoder's primary role is to reconstruct a high-resolution image from the compressed representation created by the encoder.</p>
-    <p><b>Upsampling: The decoder begins by increasing the spatial dimensions of the compressed representation. Upsampling techniques, such as transposed convolutional layers are employed to reverse the downsampling done by the encoder.</b></p>
+    <p><b>Upsampling:</b> The decoder begins by increasing the spatial dimensions of the compressed representation. Upsampling techniques, such as transposed convolutional layers are employed to reverse the downsampling done by the encoder.</p>
     <p><b>Feature reconstruction: </b>As the decoder unfolds, it progressively reconstructs finer details lost during the downsampling process. This involves capturing intricate patterns, textures, and structures to recreate a more detailed version of the original image. Additionally, to improve image reconstruction, the decoder uses skip connections, connecting equivalent layers between the encoder and decoder to learn high level features from the original image.</p>
     <p><b>Output generation: </b>The final output of the decoder is a high-resolution image that closely resembles the original input but with enhanced details. This image is the result of the model's learning process, where it has iteratively improved its ability to reconstruct detailed features from the compressed representation.</p>
     <hr>
