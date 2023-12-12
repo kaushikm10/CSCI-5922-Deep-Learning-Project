@@ -9,6 +9,18 @@
             height: 50%;
             margin-left: 25%;
         }
+
+        .result{
+            display: flex;
+            margin-left: -10%;
+        }
+
+        .result img{
+            width: 50%;
+            height: 50%;
+            margin-left: 0%;
+        }
+
     </style>
 {% endblock %}
 
@@ -17,7 +29,13 @@
 <section>
 <h1 style="text-align: center;">Results</h1>
 
-<p>After an extensive training process, the image super-resolution model has demonstrated significant improvements, producing high-quality results.
+<p>After an extensive training process, the image super-resolution model has demonstrated significant improvements, producing high-quality results.</p>
+<div class="result">
+<img src="{{ url_for('static', filename='low_res.png') }}">
+<img src="{{ url_for('static', filename='high_res_true.png') }}">
+<img src="{{ url_for('static', filename='high_res_pred.png') }}">
+</div>
+    <hr>
 <h4 style="text-align: center;">Model Training</h4>
 <p>The model is trained iteratively over 1000 epochs. This extensive training duration allows the model to grasp the complexities of the dataset, progressively improving its ability to generate high-quality, super-resolved images. The use of a batch size of 128 during training ensures efficient updates of the model's weights, striking a balance between computational efficiency and the model's capacity to generalize well to diverse image data. The performance of the model is evaluated using two metrics: 1) Strutural Similarity Index and 2) Peak Signal-to-Noise Ratio. The model's training is facilitated by the Adam optimizer that optimizes the Mean Squared Error loss. This optimizer contributes to the model's efficiency in navigating the complex landscape of image data, enhancing its ability to converge towards optimal results during the training process.</p>
 <hr>
