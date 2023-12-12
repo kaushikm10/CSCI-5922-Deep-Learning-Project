@@ -3,14 +3,47 @@
 {% block title %}
     <title>Results</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        img {
+            width: 50%;
+            height: 50%;
+            margin-left: 25%;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-<h1>Results</h1>
 
+<section>
+<h1 style="text-align: center;">Results</h1>
+
+<p>After an extensive training process, the image super-resolution model has demonstrated significant improvements, producing high-quality results.</p>
+
+<h4 style="text-align: center;">Model Training</h4>
+<p>The model is trained iteratively over 1000 epochs. This extensive training duration allows the model to grasp the complexities of the dataset, progressively improving its ability to generate high-quality, super-resolved images. The use of a batch size of 128 during training ensures efficient updates of the model's weights, striking a balance between computational efficiency and the model's capacity to generalize well to diverse image data. The performance of the model is evaluated using two metrics: 1) Strutural Similarity Index and 2) Peak Signal-to-Noise Ratio. The model's training is facilitated by the Adam optimizer that optimizes the Mean Squared Error loss. This optimizer contributes to the model's efficiency in navigating the complex landscape of image data, enhancing its ability to converge towards optimal results during the training process.</p>
+<hr>
+<h4 style="text-align: center;">Loss Function</h4> 
+<img src="{{ url_for('static', filename='mse.jpg') }}"><br>
+<a href="https://medium.com/analytics-vidhya/loss-functions-for-image-super-resolution-sisr-8a65644fbd85">Source</a>
+<p>During training, the model optimizes the Mean Squared Error (MSE) loss function. This optimization process minimizes the error between the predicted and actual high-resolution images, guiding the model to converge towards accurate and visually pleasing results. The MSE loss function serves as a crucial guide, steering the model towards learning the intricate details necessary for successful image super-resolution. The plot below shows the progression of loss over 1000 epochs. Initially, the loss is high but then reduces as the model is trained to improve upon it.</p>
 <div id="loss-plot" style="float: auto;"></div>
+<hr>
+<h4 style="text-align: center;">Structural Similarity Index</h4>
+<p>The Structural Similarity Index (SSIM) is often used as a metric to assess the quality of the enhanced (super-resolved) images. SSIM evaluates the similarity between the super-resolved image and the original high-resolution image, considering structural information, luminance, and contrast.</p>
+<img src="{{ url_for('static', filename='ssim.svg') }}">
+<a href="https://en.wikipedia.org/wiki/Structural_similarity">Source</a>
+<p>A higher SSIM value indicates a closer match between the super-resolved and high-resolution images, suggesting that the super-resolved image preserves structural details, luminance, and contrast similar to the original high-resolution image.</p>
 <div id="ssim-plot" style="float: auto;"></div>
+<hr>
+<h4 style="text-align: center;">Peak Signal-to-Noise Ratio</h4>
+<p>The Peak Signal-to-Noise Ratio is a metric commonly used to evaluate the quality of an image by measuring the ratio between the maximum possible power of a signal and the power of the corrupting noise that affects the quality of its representation.</p>
+<img src="{{ url_for('static', filename='PSNR_MATH.jpg') }}">
+<a href="https://www.ni.com/en-in/shop/data-acquisition-and-control/add-ons-for-data-acquisition-and-control/what-is-vision-development-module/peak-signal-to-noise-ratio-as-an-image-quality-metric.html">Source</a>
+<p> It's often expressed in decibels (dB) and is calculated using the mean squared error between the original (ground truth) and the compressed or reconstructed image. A higher PSNR value indicates a higher quality image, as it implies a lower level of noise or distortion in the reconstructed image.</p>
 <div id="psnr-plot" style="float: auto;"></div>
+
+
+</section>
 
 <script>
     var x = {{ x_axis | safe }};
@@ -100,7 +133,7 @@
     var data = [psnrTrace, valpsnrTrace];
 
     var layout = {
-        title: 'Training and Validation Peak-Signal Noise Ratio Over 1000 Epochs',
+        title: 'Training and Validation Peak Signal-to-Noise Ratio Over 1000 Epochs',
         xaxis: {
             title: 'Epochs'
         },
